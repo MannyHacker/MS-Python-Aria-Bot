@@ -77,7 +77,7 @@ class AriaDownloadHelper(DownloadHelper):
         download = aria2.get_download(self.gid)
         if download.is_waiting:
             aria2.remove([download])
-            self.__listener.onDownloadError("Cancelled by user")
+            self.__listener.onDownloadError("Cancelled by 👤user")
             return
         if len(download.followed_by_ids) != 0:
             downloads = aria2.get_downloads(download.followed_by_ids)
