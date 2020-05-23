@@ -55,7 +55,7 @@ def get_readable_file_size(size_in_bytes) -> str:
     try:
         return f'{round(size_in_bytes, 2)}{SIZE_UNITS[index]}'
     except IndexError:
-        return 'File too large'
+        return '⛩ 𝕱𝖎𝖑𝖊 𝖙𝖔𝖔 𝖑𝖆𝖗𝖌𝖊 ⛩'
 
 
 def getDownloadByGid(gid):
@@ -89,7 +89,7 @@ def get_readable_message():
     with download_dict_lock:
         msg = ""
         for download in list(download_dict.values()):
-            msg += f"🍄<i>{download.name()}</i> - "
+            msg += f"🍄<i>{download.name()}</i>   "
             msg += download.status()
             if download.status() != MirrorStatus.STATUS_ARCHIVING:
                 msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code> | " \
@@ -97,7 +97,7 @@ def get_readable_message():
                        f"\n<b>Speed</b> {download.speed()}, \n<b>ETA:</b> {download.eta()} "
                 # if hasattr(download, 'is_torrent'):
                 try:
-                    msg += f"\n| <b>P:</b> {download.aria_download().connections} " \
+                    msg += f"\n<b>P:</b> {download.aria_download().connections} " \
                         f"| <b>S:</b> {download.aria_download().num_seeders}"
                 except:
                     pass
